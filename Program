@@ -1,0 +1,33 @@
+namespace Bridge
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Main representa al cliente
+
+            Dictionary<string, double> productos = new Dictionary<string, double>();
+
+            //Estos son los productos a usar
+            productos.Add("A101", 56.32);
+            productos.Add("B102", 23.88);
+            productos.Add("C103", 974.56);
+            productos.Add("D104", 43.28);
+            productos.Add("E105", 785.12);
+            productos.Add("F106", 432.56);
+            productos.Add("G107", 874.54);
+            productos.Add("H108", 23.18);
+            productos.Add("I109", 43.12);
+            productos.Add("J110", 21.42);
+        
+
+        //Creamos el Bridge
+        CAbstraccion bridge = new CAbstraccion(new CImplementacion2(), productos);
+
+        // CAbstraccion bridge new Cabstraccion(2, productos);
+
+        bridge.MostrarTotales();
+        bridge.Listar();
+        }
+    }
+}
