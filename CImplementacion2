@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bridge
+{
+    class CImplementacion2 : IBridge
+    {
+        public void MostrarTotales(Dictionary<string, double> pProductos)
+        {
+            double total = 0;
+            double totala = 0;
+            double totalb = 0;
+            double totalc = 0;
+            int cantidad = 0;
+
+            foreach(KeyValuePair<string, double> p in pProductos)
+            {
+                total += p.Value;
+                if (p.Key[0] == 'A')
+                    totala += p.Value;
+                if (p.Key[0] == 'B')
+                    totalb += p.Value;
+                if(p.Key[0] == 'C')
+                    totalc += p.Value;
+
+                cantidad++;
+            }
+
+            Console.WriteLine("El total de aseo es ${0}", totala);
+            Console.WriteLine("El total de bebidas es ${0}", totalb);
+            Console.WriteLine("El total de comida es ${0}", totalc);
+            Console.WriteLine("El total de {0} productos es ${1}", cantidad, total);
+
+
+        }
+
+
+        public void ListarProductos(Dictionary<string, double> pProductos)
+        {
+            foreach (KeyValuePair<string, double> p in pProductos)
+            {
+                if (p.Key[0] == 'A')
+                    Console.ForegroundColor = ConsoleColor.Green;
+                if (p.Key[0] == 'B')
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                if (p.Key[0] == 'C')
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine("{0} - {1}", p.Key, p.Value);
+            }
+        }
+    }
+}
